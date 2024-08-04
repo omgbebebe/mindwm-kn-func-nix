@@ -142,11 +142,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1722697311,
-        "narHash": "sha256-fczWPuDRXlhj4t3X6XZSBJCgk9OwuS3CgLwuY/TtuQI=",
+        "lastModified": 1722758809,
+        "narHash": "sha256-OMGtiAiSBIQeb+XdSFYWzB4nE45o4IMIG+DCO/g8+Dg=",
         "owner": "omgbebebe",
         "repo": "neomodel.py-nix",
-        "rev": "709da776cd0d87a53b88ea73016312c79089c507",
+        "rev": "ff4cfd012cb8c687d05a4db0415d9b5689f93595",
         "type": "github"
       },
       "original": {
@@ -157,16 +157,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1717179513,
-        "narHash": "sha256-vboIEwIQojofItm2xGCdZCzW96U85l9nDW3ifMuAIdM=",
+        "lastModified": 1722640603,
+        "narHash": "sha256-TcXjLVNd3VeH1qKPH335Tc4RbFDbZQX+d7rqnDUoRaY=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "63dacb46bf939521bdc93981b4cbb7ecb58427a0",
+        "rev": "81610abc161d4021b29199aa464d6a1a521e0cc9",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "24.05",
+        "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }

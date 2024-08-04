@@ -1,6 +1,6 @@
 [project]
 name = "mindwm-knfunc"
-version = "0.9.1"
+version = "0.1.0"
 authors = [
   { name="Omg Bebebe", email="omgbebebe@gmail.com" },
 ]
@@ -16,7 +16,7 @@ dependencies = [
 ]
 
 [project.scripts]
-mindwm-knfunc = "mindwm.knfunc:main"
+mindwm-knfunc = "knfunc.server:run"
 
 [project.urls]
 Homepage = "https://github.com/mindwm/mindwm-manager"

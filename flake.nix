@@ -2,7 +2,8 @@
   description = "A MindWM-Manager service implemented in Python";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/24.05";
+    #nixpkgs.url = "github:nixos/nixpkgs/24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
     neomodel-py.url = "github:omgbebebe/neomodel.py-nix";
     neomodel-py.inputs.nixpkgs.follows = "nixpkgs";
@@ -28,11 +29,13 @@
         ];
         project = pkgs.callPackage ./package.nix {
           python = my_python;
+          parliament = inputs.parliament-py.packages.${system}.default;
+          mindwm-sdk-python = inputs.mindwm-sdk-python.packages.${system}.default;
         };
         dockerImage = pkgs.dockerTools.buildImage {
-          name = "mindwm-manager";
+          name = "mindwm-knfunc";
           config = {
-            cmd = [ "${project}/bin/mindwm-manager" ];
+            cmd = [ "${project}/bin/mindwm-knfunc" ];
           };
         };
       in { 

@@ -1,6 +1,7 @@
 import os
 import sys
 import re
+import time
 
 from parliament import Context, event
 from mindwm.neomodel import TmuxPane
@@ -13,14 +14,14 @@ from neomodel import config
 # logs and traces
 func_name = "func_touch"
 import otlp
-from otlp import logger,tracer
 from opentelemetry.trace.propagation.tracecontext import TraceContextTextMapPropagator
+(logger, tracer) = otlp.init(func_name)
 
 @event
 def main(context: Context):
     event = context.cloud_event
     # NOTE: need to fetch a traceId part from the `traceparent` field value
-    te = MindWM.TouchEvent.from_json(conversion.to_json(event))
+    te = TouchEvent.from_json(conversion.to_json(event))
     ctx = TraceContextTextMapPropagator().extract(carrier=event)
 
     config.DATABASE_URL = os.environ["NEO4J_BOLT_URL"]
