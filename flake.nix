@@ -32,7 +32,7 @@
           parliament = inputs.parliament-py.packages.${system}.default;
           mindwm-sdk-python = inputs.mindwm-sdk-python.packages.${system}.default;
         };
-        dockerImage = pkgs.dockerTools.buildImage {
+        dockerImage = pkgs.dockerTools.buildLayeredImage {
           name = "mindwm-knfunc";
           config = {
             cmd = [ "${project}/bin/mindwm-knfunc" ];
@@ -45,6 +45,8 @@
 #          packages = [ project ];
           buildInputs = with pkgs; [
             my_python
+            regctl
+            skopeo
           ];
           shellHook = ''
             export PYTHONPATH="$PYTHONPATH:./src"
