@@ -1,0 +1,25 @@
+apiVersion: eventing.knative.dev/v1
+kind: Trigger
+metadata:
+  name: mindwm-touch-huyach-trigger
+  namespace: context-purple
+spec:
+  broker: context-purple-broker
+  delivery:
+    deadLetterSink:
+      ref:
+        apiVersion: serving.knative.dev/v1
+        kind: Service
+        name: context-purple-broker-dead-letter
+        namespace: context-purple
+  filter: {}
+  filters:
+    Any:
+    - exact:
+        type: touch
+  subscriber:
+    ref:
+      apiVersion: serving.knative.dev/v1
+      kind: Service
+      name: mindwm-touch-huyach
+      namespace: context-purple

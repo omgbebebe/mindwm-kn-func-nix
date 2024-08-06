@@ -26,6 +26,7 @@
           pydantic dateutil urllib3
           opentelemetry-sdk opentelemetry-exporter-otlp
           neo4j
+          pyyaml
         ];
         project = pkgs.callPackage ./package.nix {
           python = my_python;

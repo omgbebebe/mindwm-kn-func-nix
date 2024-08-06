@@ -17,6 +17,7 @@ dependencies = [
 
 [project.scripts]
 mindwm-knfunc = "knfunc.server:run"
+render-k8s-resources = "helpers.build_and_deploy:renderResources"
 
 [project.urls]
 Homepage = "https://github.com/mindwm/mindwm-manager"

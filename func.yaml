@@ -1,0 +1,17 @@
+name: mindwm-touch-huyach
+version: 0.2.0
+digest: image_digest
+registry: 10.20.30.11:8080
+namespace: context-purple
+filters:
+  Any:
+    - exact:
+        type: touch
+run:
+  envs:
+    - name: NEO4J_BOTL_URL
+      value: bolt://neo4j:password@purple-neo4j-neo4j.context-purple:7687
+    - name: OTEL_EXPORTER_OTLP_ENDPOINT
+      value: http://otel-collector-opentelemetry-collector.monitoring-ng:4317
+    - name: OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
+      value: http://tempo-distributor.monitoring-ng:4317/v1/traces
