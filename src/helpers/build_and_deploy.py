@@ -11,7 +11,7 @@ class Params:
         __version = None
         __digest = None
         __registry = None
-        __namespace = None
+        __context = None
         __env = []
         __filters = {}
 
@@ -48,12 +48,12 @@ class Params:
         self.__registry = registry
 
     @property
-    def namespace(self):
-        return self.__namespace
+    def context(self):
+        return self.__context
 
-    @namespace.setter
-    def namespace(self, namespace):
-        self.__namespace = namespace
+    @context.setter
+    def context(self, context):
+        self.__context = context
 
     @property
     def envs(self):
@@ -85,7 +85,7 @@ def load_func_config():
     params.version = y['version']
     params.digest = y['digest']
     params.registry = y['registry']
-    params.namespace = y['namespace']
+    params.context = y['context']
     params.envs = y['run']['envs']
     params.filters = y['filters']
     return params
@@ -100,13 +100,13 @@ def render_trigger(params: Params):
             logger.critical(err)
 
     y['metadata']['name'] = f"{params.name}-trigger"
-    y['metadata']['namespace'] = params.namespace
-    y['spec']['broker'] = f"{params.namespace}-broker"
-    y['spec']['delivery']['deadLetterSink']['ref']['name'] = f"{params.namespace}-broker-dead-letter"
-    y['spec']['delivery']['deadLetterSink']['ref']['namespace'] = params.namespace
+    y['metadata']['namespace'] = f"context-{params.context}"
+    y['spec']['broker'] = f"context-broker-{params.context}"
+    y['spec']['delivery']['deadLetterSink']['ref']['name'] = f"context-broker-{params.context}-dead-letter"
+    y['spec']['delivery']['deadLetterSink']['ref']['namespace'] = f"context-{params.context}"
     y['spec']['filters'] = params.filters
     y['spec']['subscriber']['ref']['name'] = params.name
-    y['spec']['subscriber']['ref']['namespace'] = params.namespace
+    y['spec']['subscriber']['ref']['namespace'] = f"context-{params.context}"
 
     logger.info("writing trigger.yaml")
     with open("trigger.yaml", "w") as f:
@@ -121,7 +121,7 @@ def render_kservice(params: Params):
             logger.critical(err)
 
     y['metadata']['name'] = params.name
-    y['metadata']['namespace'] = params.namespace
+    y['metadata']['namespace'] = f"context-{params.context}"
     y['spec']['template']['spec']['containers'][0]['image'] = f"{params.registry}/{params.name}:{params.version}@{params.digest}"
     y['spec']['template']['spec']['containers'][0]['env'] = params.envs
 

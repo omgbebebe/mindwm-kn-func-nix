@@ -1,10 +1,10 @@
 name: knfunc-demo
 version: 0.2.0
-digest: sha256:87b59aae323f189322a529458a7c1d24f7e1da9d2379e4b550909802ae01341b
+digest: sha256:aedb02e04a495fe2b56b0723c9cebdb58dc88ff50910167a65516582b3f4089c
 registry: 10.20.30.11:8080
-namespace: context-purple
+context: purple
 filters:
-  Any:
+  - any:
     - exact:
         type: touch
 run:

@@ -14,7 +14,7 @@ spec:
         namespace: context-name
   filter: {}
   filters:
-    Any:
+    any:
     - exact:
         type: touch
   subscriber:

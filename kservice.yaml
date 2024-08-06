@@ -1,7 +1,7 @@
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: mindwm-touch-huyach
+  name: knfunc-demo
   namespace: context-purple
 spec:
   template:
@@ -14,4 +14,4 @@ spec:
           value: http://otel-collector-opentelemetry-collector.monitoring-ng:4317
         - name: OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
           value: http://tempo-distributor.monitoring-ng:4317/v1/traces
-        image: 10.20.30.11:8080/mindwm-touch-huyach:0.2.0@sha256:87b59aae323f189322a529458a7c1d24f7e1da9d2379e4b550909802ae01341b
+        image: 10.20.30.11:8080/knfunc-demo:0.2.0@sha256:aedb02e04a495fe2b56b0723c9cebdb58dc88ff50910167a65516582b3f4089c
