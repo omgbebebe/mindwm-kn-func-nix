@@ -13,6 +13,7 @@ classifiers = [
     "Operating System :: Linux",
 ]
 dependencies = [
+#  "parliament"
 ]
 
 [project.scripts]

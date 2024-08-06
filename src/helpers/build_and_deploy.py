@@ -93,7 +93,7 @@ def load_func_config():
 
 def render_trigger(params: Params):
     logger.info("reading trigger template")
-    with open("tmpl_trigger.yaml") as f:
+    with open("templates/trigger.yaml") as f:
         try:
             y = yaml.safe_load(f)
         except yaml.YAMLError as err:
@@ -114,7 +114,7 @@ def render_trigger(params: Params):
 
 def render_kservice(params: Params):
     logger.info("reading kservice template")
-    with open("tmpl_kservice.yaml") as f:
+    with open("templates/kservice.yaml") as f:
         try:
             y = yaml.safe_load(f)
         except yaml.YAMLError as err:
@@ -134,3 +134,6 @@ def renderResources():
     params = load_func_config()
     render_trigger(params)
     render_kservice(params)
+
+if __name__ == "__main__":
+    renderResources()
