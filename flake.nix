@@ -89,6 +89,7 @@
               skopeo
               yq
               kubectl
+              moreutils
             ]);
         };
       };
